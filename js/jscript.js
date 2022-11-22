@@ -2,15 +2,17 @@
 var timer = document.querySelector("#timer")
 var intro = document.querySelector("#intro")
 var start = document.querySelector("#start")
+var allQuestions = document.querySelector("#allQuestions")
 var questions1 = document.querySelector("#questions1")
 var questions2 = document.querySelector("#questions2")
 var questions3 = document.querySelector("#questions3")
 var questions4 = document.querySelector("#questions4")
 var results = document.querySelector("#results")
 var highscores = document.querySelector("#highscores")
-var initialTime = 10;
+var initialTime = 60;
 var totalPoints =0;
-var initials
+var initials =document.querySelector("#initials")
+var userInitials = ""
 var qL1 = document.querySelector("#qL1")
 var answers1 = document.querySelector("#answers1")
 var answers2 = document.querySelector("#answers2")
@@ -26,18 +28,27 @@ var a16 = document.querySelector("#a16")
 
 
 // display timer and intro
+intro.style.display = "block";
 function startTimer (){
+    
     var interval = setInterval(function(){
         if (initialTime == 0){
             clearInterval(interval);
             console.log("TIME HAS RUN OUT!")
+
             
         }
         timer.innerHTML= initialTime + " seconds"
         initialTime--;
-        intro.style.display = "none";
     },1000)
 }
+
+start.addEventListener("click", function(){
+    startTimer();
+    showQuestions1();
+    intro.style.display = "none";
+
+})
 // display question 
 function showQuestions1(){
     questions1.style.display = "block";
@@ -87,21 +98,9 @@ function showQuestions4(){
     a15.setAttribute("isCorrect", false)
     a16.innerHTML = "23";
     a16.setAttribute("isCorrect", true)
-
 }
 
-function showResults (){
-    
-    results.innerHTML = ("GAME OVER! YOUR RESULTS ARE: ", totalPoints)
 
-}
-
-intro.style.display = "block";
-start.addEventListener("click", function(){
-    startTimer();
-    showQuestions1();
-
-})
 answers1.querySelectorAll("li").forEach(answer => {
     answer.addEventListener('click', event => {
     if(event.target == a2){
@@ -114,12 +113,14 @@ answers1.querySelectorAll("li").forEach(answer => {
         totalPoints -= 10;
         initialTime -= 5;
     }
+    questions1.style.display = "none";
     showQuestions2();
     });
 });
 
 answers2.querySelectorAll("li").forEach(answer => {
     answer.addEventListener('click', event => {
+    
     if(event.target == a8){
         console.log("true");
         // add points
@@ -130,12 +131,14 @@ answers2.querySelectorAll("li").forEach(answer => {
         totalPoints -= 10;
         initialTime -= 5;
     }
+    questions2.style.display = "none";
     showQuestions3();
     });
 });
 
 answers3.querySelectorAll("li").forEach(answer => {
     answer.addEventListener('click', event => {
+    
     if(event.target == a11){
         console.log("true");
         // add points
@@ -146,12 +149,14 @@ answers3.querySelectorAll("li").forEach(answer => {
         totalPoints -= 10;
         initialTime -= 5;
     }
+    questions3.style.display = "none";
     showQuestions4();
     });
 });
 
 answers4.querySelectorAll("li").forEach(answer => {
     answer.addEventListener('click', event => {
+    
     if(event.target == a16){
         console.log("true");
         // add points
@@ -162,8 +167,19 @@ answers4.querySelectorAll("li").forEach(answer => {
         totalPoints -= 10;
         initialTime -= 5;
     }
+    allQuestions.style.display = "none";
+    //results.innerHTML = "Your results are: " + totalPoints;
+    results.style.display = "block";
+    
     
     });
+
 });
+
+submit.addEventListener("click", function(){
+    userInitials = initials.value;
+
+})
+
 
 
