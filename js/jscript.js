@@ -8,31 +8,32 @@ var questions3 = document.querySelector("#questions3")
 var questions4 = document.querySelector("#questions4")
 var results = document.querySelector("#results")
 var highscores = document.querySelector("#highscores")
-initialTime = 60;
+var initialTime = 10;
 var totalPoints =0;
+var initials
 var qL1 = document.querySelector("#qL1")
-var q1 = document.querySelector("#q1")
-var q2 = document.querySelector("#q2")
-var q3 = document.querySelector("#q3")
-var q4 = document.querySelector("#q4")
-var q5 = document.querySelector("#q5")
-var q6 = document.querySelector("#q6")
-var q7 = document.querySelector("#q7")
-var q8 = document.querySelector("#q8")
-var q9 = document.querySelector("#q9")
-var q10 = document.querySelector("#q10")
-var q11 = document.querySelector("#q11")
-var q12 = document.querySelector("#q12")
-var q13 = document.querySelector("#q13")
-var q14 = document.querySelector("#q14")
-var q15 = document.querySelector("#q15")
-var q16 = document.querySelector("#q16")
+var answers1 = document.querySelector("#answers1")
+var answers2 = document.querySelector("#answers2")
+var answers3 = document.querySelector("#answers3")
+var answers4 = document.querySelector("#answers4")
+var a2 = document.querySelector("#a2")
+var qL2 = document.querySelector("#qL2")
+var a8 = document.querySelector("#a8")
+var qL3 = document.querySelector("#qL3")
+var a11 = document.querySelector("#a11")
+var qL4 = document.querySelector("#qL4")
+var a16 = document.querySelector("#a16")
 
 
 // display timer and intro
 function startTimer (){
-    setInterval(function(){
-        timer.innerHTML= time +"seconds"
+    var interval = setInterval(function(){
+        if (initialTime == 0){
+            clearInterval(interval);
+            console.log("TIME HAS RUN OUT!")
+            
+        }
+        timer.innerHTML= initialTime + " seconds"
         initialTime--;
         intro.style.display = "none";
     },1000)
@@ -41,51 +42,57 @@ function startTimer (){
 function showQuestions1(){
     questions1.style.display = "block";
     qL1.innerHTML = "How many championships does Sir Lewis Hamilton have?"
-    q1.innerHTML = "9";
-    q1.setAttribute("isCorrect", false)
-    q2.innerHTML = "7";
-    q2.setAttribute("isCorrect", true)
-    q3.innerHTML = "6";
-    q3.setAttribute("isCorrect", false)
-    q4.innerHTML = "8";
-    q4.setAttribute("isCorrect", false)
+    a1.innerHTML = "9";
+    a1.setAttribute("isCorrect", false)
+    a2.innerHTML = "7";
+    a2.setAttribute("isCorrect", true)
+    a3.innerHTML = "6";
+    a3.setAttribute("isCorrect", false)
+    a4.innerHTML = "8";
+    a4.setAttribute("isCorrect", false)
 }
 function showQuestions2(){
     questions2.style.display = "block";
     qL2.innerHTML = "Where is the first race of the F1 season begin?"
-    q5.innerHTML = "Japan";
-    q5.setAttribute("isCorrect", false)
-    q6.innerHTML = "Spain";
-    q6.setAttribute("isCorrect", false)
-    q7.innerHTML = "Brazil";
-    q7.setAttribute("isCorrect", false)
-    q8.innerHTML = "Abu Dhabi";
-    q8.setAttribute("isCorrect", true)
+    a5.innerHTML = "Japan";
+    a5.setAttribute("isCorrect", false)
+    a6.innerHTML = "Spain";
+    a6.setAttribute("isCorrect", false)
+    a7.innerHTML = "Brazil";
+    a7.setAttribute("isCorrect", false)
+    a8.innerHTML = "Abu Dhabi";
+    a8.setAttribute("isCorrect", true)
 }
 function showQuestions3(){
     questions3.style.display = "block";
     qL3.innerHTML = "What race team does Sir Lewis Hamilton drive for?"
-    q9.innerHTML = "Ferrari";
-    q9.setAttribute("isCorrect", false)
-    q10.innerHTML = "Redbull";
-    q10.setAttribute("isCorrect", false)
-    q11.innerHTML = "Mercedes";
-    q11.setAttribute("isCorrect", true)
-    q12.innerHTML = "Mclaren";
-    q12.setAttribute("isCorrect", false)
+    a9.innerHTML = "Ferrari";
+    a9.setAttribute("isCorrect", false)
+    a10.innerHTML = "Redbull";
+    a10.setAttribute("isCorrect", false)
+    a11.innerHTML = "Mercedes";
+    a11.setAttribute("isCorrect", true)
+    a12.innerHTML = "Mclaren";
+    a12.setAttribute("isCorrect", false)
 
 }
 function showQuestions4(){
     questions4.style.display = "block";
     qL4.innerHTML = "How many races were there in the 2022 F1 season?"
-    q13.innerHTML = "25";
-    q13.setAttribute("isCorrect", false)
-    q14.innerHTML = "17";
-    q14.setAttribute("isCorrect", false)
-    q15.innerHTML = "20";
-    q15.setAttribute("isCorrect", false)
-    q16.innerHTML = "23";
-    q16.setAttribute("isCorrect", true)
+    a13.innerHTML = "25";
+    a13.setAttribute("isCorrect", false)
+    a14.innerHTML = "17";
+    a14.setAttribute("isCorrect", false)
+    a15.innerHTML = "20";
+    a15.setAttribute("isCorrect", false)
+    a16.innerHTML = "23";
+    a16.setAttribute("isCorrect", true)
+
+}
+
+function showResults (){
+    
+    results.innerHTML = ("GAME OVER! YOUR RESULTS ARE: ", totalPoints)
 
 }
 
@@ -95,28 +102,68 @@ start.addEventListener("click", function(){
     showQuestions1();
 
 })
-
-// questions events qL1
-q1.addEventListener("click", function(){
-    console.log(q1.getAttribute("isCorrect"))
-})
-questions2.addEventListener("click", function(){
-    console.log(q2.getAttribute("isCorrect"))
-    var answerValue = q2.getAttribute("isCorrect")
-    if (answerValue){
+answers1.querySelectorAll("li").forEach(answer => {
+    answer.addEventListener('click', event => {
+    if(event.target == a2){
+        console.log("true");
         // add points
-        totalPoints += 10
+        totalPoints += 10;
     }else {
+        console.log("false");
         //deduct points
-        totalPoints -= 10
-    
-
+        totalPoints -= 10;
+        initialTime -= 5;
     }
-})
-q3.addEventListener("click", function(){
-    console.log(q3.getAttribute("isCorrect"))
-})
-q4.addEventListener("click", function(){
-    console.log(q4.getAttribute("isCorrect"))
-})
+    showQuestions2();
+    });
+});
+
+answers2.querySelectorAll("li").forEach(answer => {
+    answer.addEventListener('click', event => {
+    if(event.target == a8){
+        console.log("true");
+        // add points
+        totalPoints += 10;
+    }else {
+        console.log("false");
+        //deduct points
+        totalPoints -= 10;
+        initialTime -= 5;
+    }
+    showQuestions3();
+    });
+});
+
+answers3.querySelectorAll("li").forEach(answer => {
+    answer.addEventListener('click', event => {
+    if(event.target == a11){
+        console.log("true");
+        // add points
+        totalPoints += 10;
+    }else {
+        console.log("false");
+        //deduct points
+        totalPoints -= 10;
+        initialTime -= 5;
+    }
+    showQuestions4();
+    });
+});
+
+answers4.querySelectorAll("li").forEach(answer => {
+    answer.addEventListener('click', event => {
+    if(event.target == a16){
+        console.log("true");
+        // add points
+        totalPoints += 10;
+    }else {
+        console.log("false");
+        //deduct points
+        totalPoints -= 10;
+        initialTime -= 5;
+    }
+    
+    });
+});
+
 
