@@ -13,14 +13,14 @@
             <!-- intro section of quiz; quiz name, instructions and start button -->
             <section id="intro" style="display:none;">
                 <h1>Formula 1 Quiz Challenge</h1>
-                <h1>Answer the multiple choice question within 60 seconds. Any questions answered incorrectly will take 5 seconds off the timer. GODD LUCK!</h1> 
+                <h1>Answer the multiple choice question within 60 seconds. Any questions answered incorrectly will take 5 seconds off the timer. GOOD LUCK!</h1> 
                 <button-start id="start">Start the Quiz</button-start>
             </section>
         <div id="allQuestions">
             <!-- quiz questions -->
             <section id="questions1" style="display:none;">
                 <h1 id="qL1"></h1>
-                <ul id="answers1">
+                <ul id="answers1" style="list-style: none;">
                     <li id="a1"></li>
                     <li id="a2"></li>
                     <li id="a3"></li>
@@ -29,7 +29,7 @@
             </section>
             <section id="questions2" style="display:none;">
                 <h1 id="qL2"></h1>
-                <ul id="answers2">
+                <ul id="answers2" style="list-style: none;">
                     <li id="a5"></li>
                     <li id="a6"></li>
                     <li id="a7"></li>
@@ -38,7 +38,7 @@
             </section>
             <section id="questions3" style="display:none;">
                 <h1 id="qL3"></h1>
-                <ul id="answers3">
+                <ul id="answers3" style="list-style: none;">
                     <li id="a9"></li>
                     <li id="a10"></li>
                     <li id="a11"></li>
@@ -47,7 +47,7 @@
             </section>
             <section id="questions4" style="display:none;">
                 <h1 id="qL4"></h1>
-                <ul id="answers4">
+                <ul id="answers4" style="list-style: none;">
                     <li id="a13"></li>
                     <li id="a14"></li>
                     <li id="a15"></li>
@@ -56,9 +56,10 @@
             </section>
         </div>
         <section id="results" style="display:none;"> 
+            <h1 id ="score"></h1>
             <h1>Initials</h1>
             <input type="text" id="initials">
-            <button-submit id="userInitials">View Highscore</button-submit>
+            <button-submit id="userInitials"></button-submit>
         </section>
     
         

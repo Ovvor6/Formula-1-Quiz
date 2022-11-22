@@ -1,4 +1,4 @@
-// html variables
+// html variables used in js 
 var timer = document.querySelector("#timer")
 var intro = document.querySelector("#intro")
 var start = document.querySelector("#start")
@@ -27,7 +27,7 @@ var qL4 = document.querySelector("#qL4")
 var a16 = document.querySelector("#a16")
 
 
-// display timer and intro
+// display timer and introduction
 intro.style.display = "block";
 function startTimer (){
     
@@ -42,14 +42,14 @@ function startTimer (){
         initialTime--;
     },1000)
 }
-
+// start button moves to the questions
 start.addEventListener("click", function(){
     startTimer();
     showQuestions1();
     intro.style.display = "none";
 
 })
-// display question 
+// display all questions
 function showQuestions1(){
     questions1.style.display = "block";
     qL1.innerHTML = "How many championships does Sir Lewis Hamilton have?"
@@ -100,7 +100,7 @@ function showQuestions4(){
     a16.setAttribute("isCorrect", true)
 }
 
-
+// when clicked on questions, capture score and deduct points
 answers1.querySelectorAll("li").forEach(answer => {
     answer.addEventListener('click', event => {
     if(event.target == a2){
@@ -170,13 +170,16 @@ answers4.querySelectorAll("li").forEach(answer => {
     allQuestions.style.display = "none";
     //results.innerHTML = "Your results are: " + totalPoints;
     results.style.display = "block";
+    score.innerHTML = totalPoints
+
     
     
     });
 
 });
-
+// submit button 
 submit.addEventListener("click", function(){
+    submit.style.display = "block";
     userInitials = initials.value;
 
 })
